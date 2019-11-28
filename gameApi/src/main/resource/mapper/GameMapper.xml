@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fh.api.game.mapper.GameMapper">
+  <insert id="add" parameterType="com.fh.api.game.model.Game">
+      insert into t_game(c_gname,f_gprice,c_login,d_showtime) values(#{c_gname},#{f_gprice},#{c_login},#{d_showtime})
+  </insert>
+
+    <select id="queryList" resultType="com.fh.api.game.model.Game">
+        select  * from t_game
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from t_game where nid=#{nid}
+    </delete>
+    <select id="toupdate" parameterType="java.lang.Integer" resultType="com.fh.api.game.model.Game">
+        select * from t_game where nid=#{nid}
+    </select>
+    <update id="update" parameterType="com.fh.api.game.model.Game" >
+        update t_game set c_gname=#{c_gname},f_gprice=#{f_gprice},c_login=#{c_login} where nid=#{nid}
+    </update>
+</mapper>
